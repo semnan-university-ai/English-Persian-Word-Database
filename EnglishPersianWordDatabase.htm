@@ -1,0 +1,48 @@
+<HTML xmlns:signature="urn:schemas-microsoft-com:office:access">
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=UTF-8"/>
+</HEAD>
+<BODY ONLOAD="ApplyTransform()">
+</BODY>
+<SCRIPT LANGUAGE="VBScript">
+	Option Explicit
+
+	Function ApplyTransform()
+		Dim objData, objStyle
+		
+		Set objData = CreateDOM
+		LoadDOM objData, "EnglishPersianWordDatabase.xml", false
+		
+		Set objStyle = CreateDOM
+		LoadDOM objStyle, "EnglishPersianWordDatabase.xsl", true
+
+		Document.Open "text/html"
+		Document.Write objData.TransformNode(objStyle)
+	End Function
+
+	Function CreateDOM()
+		On Error Resume Next
+		Dim tmpDOM
+
+		Set tmpDOM = Nothing
+		Set tmpDOM = CreateObject("MSXML2.DOMDocument.6.0")
+		
+		Set CreateDOM = tmpDOM
+	End Function
+	
+	Function LoadDOM(objDOM, strXMLFile, isXSL)
+		On Error Resume Next
+		
+		objDOM.Async = False
+		objDOM.Load strXMLFile
+		If (objDOM.ParseError.ErrorCode <> 0) Then
+			MsgBox objDOM.ParseError.Reason
+		End If
+
+		If (isXSL) Then
+			objDOM.setProperty "AllowXsltScript", true
+		End If
+	End Function
+	
+</SCRIPT>
+</HTML>
