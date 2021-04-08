@@ -10,6 +10,13 @@ English Persian Word Database - Popular database extensions
 در صورت علاقه، به تکمیل شدن این دیتاست کمک کنید
 
 <br />
+
+### Donate 
+Donate (BTC Address) : 188GPtyoyz2LXXxbyWcCrDgUM7ejSHHgZd
+
+Donate (Ethereum Address) : 0x2a77dAB50D76A2aE0A3A7572Ee2Fc34d5F94b3dB
+
+<br />
 <br />
 
 ### Other datasets collected by me
